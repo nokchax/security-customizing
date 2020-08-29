@@ -6,6 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SecurityApplication {
 
+    // security architecture doc
+    // https://spring.io/guides/topicals/spring-security-architecture
+
     /*
      * 시작점 @SpringBootApplication
      * -> EnableAutoConfiguration
