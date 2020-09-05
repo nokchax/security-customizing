@@ -33,6 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new SomeFilter(), SecurityContextPersistenceFilter.class)
                 .addFilterBefore(new SomeFilter(), SecurityContextPersistenceFilter.class)
                 .addFilterAt(new SomeFilter(), SecurityContextPersistenceFilter.class);
+
+
+        // exception 처리 / 인증에 대해서 처리를 커스터마이징 할 수 있다.
+        http.exceptionHandling()
+                .accessDeniedHandler((request, response, accessDeniedException) -> {})
+                .accessDeniedPage("/deniedPage")
+                .authenticationEntryPoint((request, response, authException) -> {});
     }
 
     @Override
