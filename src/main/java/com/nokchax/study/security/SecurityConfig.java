@@ -40,6 +40,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler((request, response, accessDeniedException) -> {})
                 .accessDeniedPage("/deniedPage")
                 .authenticationEntryPoint((request, response, authException) -> {});
+        
+        // form 로그인 커스터 마이징
+        http.formLogin()
+                .loginPage("")
+                .passwordParameter("")
+                .usernameParameter("")
+                .successHandler((request, response, authentication) -> {})
+                .successForwardUrl("")
+                .failureHandler((request, response, exception) -> {})
+                .failureUrl("")
+                .failureForwardUrl("")
+                .authenticationDetailsSource(context -> null);
+        
+        // logout 커스터 마이징
+        http.logout()
+                .logoutUrl("")
+                .addLogoutHandler((request, response, authentication) -> {})
+                .clearAuthentication(true)
+                .deleteCookies("delete cookie")
+                .logoutRequestMatcher(request -> true)
+                .logoutSuccessUrl("")
+                .logoutSuccessHandler((request, response, authentication) -> {});
     }
 
     @Override
