@@ -105,6 +105,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 return false;
             }
         });
+        
+        // about cors
+        http.cors();
     }
 
     @Override
