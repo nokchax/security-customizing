@@ -108,6 +108,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         
         // about cors
         http.cors();
+
+        // customize authentication provider
+        http.authenticationProvider(new CustomAuthenticationProvider());
     }
 
     @Override
