@@ -4,10 +4,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 
 @Configuration
@@ -56,7 +62,49 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("")
                 .failureForwardUrl("")
                 .authenticationDetailsSource(context -> null);
-        
+
+        // oauth2 login customizing
+        http.oauth2Login()
+                .tokenEndpoint(tokenEndpointConfig -> {})
+                .userInfoEndpoint(userInfoEndpointConfig -> {})
+                .authorizationEndpoint(authorizationEndpointConfig -> {})
+                .authorizedClientRepository(new OAuth2AuthorizedClientRepository() {
+                    @Override
+                    public <T extends OAuth2AuthorizedClient> T loadAuthorizedClient(String clientRegistrationId, Authentication principal, HttpServletRequest request) {
+                        return null;
+                    }
+
+                    @Override
+                    public void saveAuthorizedClient(OAuth2AuthorizedClient authorizedClient, Authentication principal, HttpServletRequest request, HttpServletResponse response) {
+
+                    }
+
+                    @Override
+                    public void removeAuthorizedClient(String clientRegistrationId, Authentication principal, HttpServletRequest request, HttpServletResponse response) {
+
+                    }
+                }).clientRegistrationRepository(registrationId -> null)
+                .loginPage("/loginpage")
+                .loginProcessingUrl("/processingUrl")
+                .redirectionEndpoint(redirectionEndpointConfig -> {})
+                .authorizedClientService(new OAuth2AuthorizedClientService() {
+                    @Override
+                    public <T extends OAuth2AuthorizedClient> T loadAuthorizedClient(String clientRegistrationId, String principalName) {
+                        return null;
+                    }
+
+                    @Override
+                    public void saveAuthorizedClient(OAuth2AuthorizedClient authorizedClient, Authentication principal) {
+
+                    }
+
+                    @Override
+                    public void removeAuthorizedClient(String clientRegistrationId, String principalName) {
+
+                    }
+                }).successHandler((request, response, authentication) -> {})
+                .failureHandler((request, response, exception) -> {});
+
         // logout 커스터 마이징
         http.logout()
                 .logoutUrl("")
