@@ -22,6 +22,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     // AuthenticationToken 은 Authentication 을 구현하는 구현체이다.
     @Override
     public boolean supports(Class<?> authentication) {
+        // TwitterOauth1.0Token
         return false;
     }
 }

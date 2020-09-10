@@ -157,8 +157,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // about cors
         http.cors();
 
+        // set multiple authentication provider
+        // https://www.baeldung.com/spring-security-multiple-auth-providers
+        // https://stackoverflow.com/questions/35363924/java-spring-security-config-multiple-authentication-providers
         // customize authentication provider
         http.authenticationProvider(new CustomAuthenticationProvider());
+
+
+        // customizing new authentication filter
+        // https://jeong-pro.tistory.com/205
     }
 
     @Override
