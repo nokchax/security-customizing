@@ -166,6 +166,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // customizing new authentication filter
         // https://jeong-pro.tistory.com/205
+        // AbstractAuthenticationProcessingFilter 를 구현하면 된다.
     }
 
     @Override
