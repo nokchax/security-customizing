@@ -167,6 +167,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // customizing new authentication filter
         // https://jeong-pro.tistory.com/205
         // AbstractAuthenticationProcessingFilter 를 구현하면 된다.
+
+        // Oauth2.0LoginAuthenticationFilter 내부 로직 summary
+        // authentication manager 는 authentication provider 리스트를 가지고 있고 리스트를 순회하면서 support 하는 authentication provider 를 가지고 authentication 을 생성한다
     }
 
     @Override
