@@ -176,10 +176,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // authentication manager 는 authentication provider 리스트를 가지고 있고 리스트를 순회하면서 support 하는 authentication provider 를 가지고 authentication 을 생성한다
         // RequestMatcher requiresAuthenticationRequestMatcher; 를 통해 해당 Filter를 적용할지 말지 판단하게 되므로 이쪽도 커스터 마이징 해야한다.
         //
+        // OAuth2AuthorizationRequestRedirectFilter redirect 를 위한 필터
+        //
         // userOauth2.0Provider 내부에
         // OAuth2UserService<OAuth2UserRequest, OAuth2User> userService; 를 통해 api와 통신하여 사용자 정보 로드
         // https://jeong-pro.tistory.com/205 기본 DefaultOAuth2UserService를 주입 받는 커스텀 UserService를 만들어서 DB에 반영하도록!
-        //
+        // 
 
     }
 
