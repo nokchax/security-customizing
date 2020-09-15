@@ -195,4 +195,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
+    // ssl 적용하기
+    // cert.pem cert.key -> keystore.p12 프로젝트 root에 저장
+    // openssl pkcs12 -export -out keystore.p12 -in cert.pem -inkey cert.key
+    //
+    // spring boot properties 에 적용하기
+    // server:
+    //  ssl:
+    //    key-store: keystore.p12
+    //    key-store-password: pw
+    //    key-store-type: PKCS12
+    //  port: 443
 }
