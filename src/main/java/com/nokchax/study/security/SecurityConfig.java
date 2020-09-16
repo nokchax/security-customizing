@@ -206,4 +206,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //    key-store-password: pw
     //    key-store-type: PKCS12
     //  port: 443
+
+
+    // oauth2.0 customizing
+    // client 등록
+    // provider 가 없는 경우 등록 (구글, 페이스북 등은 존재함 하지만 카카오는 등록해야함)
+    // AuthenticationProvider 추가해서 Oauth2.0 Token 을 가지고 후처리
 }
