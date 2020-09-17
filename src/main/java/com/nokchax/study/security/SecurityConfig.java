@@ -181,9 +181,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // >> Twitter 용 CustomProcessingFilter 구현
         // >> Twitter 용 CustomAuthenticationProvider 구현
         //
+        // Oauth2.0 커스터 마이징
         // userOauth2.0Provider 내부에
         // OAuth2UserService<OAuth2UserRequest, OAuth2User> userService; 를 통해 api와 통신하여 사용자 정보 로드
         // https://jeong-pro.tistory.com/205 기본 DefaultOAuth2UserService를 주입 받는 커스텀 UserService를 만들어서 DB에 반영하도록!
+        // 
+        // Oauth2.0AuthenticationProvider 커스터 마이징 하기
+        // OAuth2.0AuthenticationToken 대신 UserNamePasswordAuthenticationToken 을 생성해서 리턴하기
+        // 혹은 userDetails 에 커스텀 유저를 사용해보기
         // 
 
     }
