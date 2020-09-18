@@ -187,8 +187,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // https://jeong-pro.tistory.com/205 기본 DefaultOAuth2UserService를 주입 받는 커스텀 UserService를 만들어서 DB에 반영하도록!
         // 
         // Oauth2.0AuthenticationProvider 커스터 마이징 하기
-        // OAuth2.0AuthenticationToken 대신 UserNamePasswordAuthenticationToken 을 생성해서 리턴하기
-        // 혹은 userDetails 에 커스텀 유저를 사용해보기
+        // OAuth2.0AuthenticationToken 대신 UserNamePasswordAuthenticationToken 을 생성해서 리턴하기 X -> AuthenticationProvider 를 한 번 감싸고 있는 총괄 클래스가 존재하므로 안됨
+        // 혹은 userDetails 에 커스텀 유저를 사용해보기 
+        // 
         // 
 
     }
