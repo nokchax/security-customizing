@@ -188,7 +188,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 
         // Oauth2.0AuthenticationProvider 커스터 마이징 하기
         // OAuth2.0AuthenticationToken 대신 UserNamePasswordAuthenticationToken 을 생성해서 리턴하기 X -> AuthenticationProvider 를 한 번 감싸고 있는 총괄 클래스가 존재하므로 안됨
-        // 혹은 userDetails 에 커스텀 유저를 사용해보기 
+        // 혹은 userDetails 에 커스텀 유저를 사용해보기 (결국 저장하는건 userDetails 이기 때문)
+        // 단, 이후에 load 시에는 UserNamePasswordAuthenticationToken 으로 통일해도 문제없는지 테스트가 필요
         // 
         // 
 
@@ -218,4 +219,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // client 등록
     // provider 가 없는 경우 등록 (구글, 페이스북 등은 존재함 하지만 카카오는 등록해야함)
     // AuthenticationProvider 추가해서 Oauth2.0 Token 을 가지고 후처리
+    // 
 }
