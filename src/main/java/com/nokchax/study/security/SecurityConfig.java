@@ -191,7 +191,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // 혹은 userDetails 에 커스텀 유저를 사용해보기 (결국 저장하는건 userDetails 이기 때문)
         // 단, 이후에 load 시에는 UserNamePasswordAuthenticationToken 으로 통일해도 문제없는지 테스트가 필요
         // 
-        // 
+        //
+
+        // Twitter 를 SpringSecurity 와 Twitter4j 로 구현하기
+        // http.apply(customConfigurer) 를 사용해서 추가
+        // RedirectFilter 와 AuthenticatedFilter 그리고 AuthenticationProvider 를 커스터마이징 해야한다.
+        
 
     }
 
