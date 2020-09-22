@@ -197,7 +197,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // http.apply(customConfigurer) 를 사용해서 추가
         // RedirectFilter 와 AuthenticatedFilter 그리고 AuthenticationProvider 를 커스터마이징 해야한다.
         
-
+        // RedirectFilter 는 Oauth1 요청에 첫 단계를 위한 필터로 
+        // 회원의 requestToken 을 생성하고 이를 twitter server 측에 전달하는 역할을 한다.
+        
+        // AuthenticationProvider 는 Twitter 로그인 이후에 다시 리다이렉트 되는 url와 매칭되어 oauthverifier 와 requestToken을 가지고
+        // 앱과 twitter api 사이의 통신을 통해 사용자의 정보를 획득한다..
+        
+        // AuthenticatedFilter 는 AuthenticationProvider 와 각종 handler 등을 포함한 추상 클래스로
+        // 커스터마이징 한 AuthenticatedFilter 는 TwitterOauthToken 이라는 Authentication 을 임시로 생성하고 이를
+        // AuthenticationProvider 에 넘겨주는 역할, 이후 Authentication (TwitterOauthToken) 을 받아서 성공 혹은 실패 처리를 진행한다.
     }
 
     @Override
