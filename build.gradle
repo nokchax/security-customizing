@@ -29,6 +29,9 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     testImplementation 'org.springframework.security:spring-security-test'
+
+    // for twitter4j
+    compile 'org.twitter4j:twitter4j-core:4.0.8-SNAPSHOT'
 }
 
 test {
