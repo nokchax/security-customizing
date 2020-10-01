@@ -9,7 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestResolver;
 import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +67,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // oauth2 login customizing
         http.oauth2Login()
+                .authorizationEndpoint()
+                .authorizationRequestResolver(new OAuth2AuthorizationRequestResolver() {
+                    // request에 대해서 oauth 에 사용될 request로 변환해 주는 작업을 하는 클래스.
+                    // oauth login 에서 parameter 를 사용한다면, 값을 추출하기에 제일 적합? 깔끔하다.
+
+                    @Override
+                    public OAuth2AuthorizationRequest resolve(HttpServletRequest request) {
+                        return null;
+                    }
+
+                    @Override
+                    public OAuth2AuthorizationRequest resolve(HttpServletRequest request, String clientRegistrationId) {
+                        return null;
+                    }
+                })
+                .and()
                 .tokenEndpoint(tokenEndpointConfig -> {})
                 .userInfoEndpoint(userInfoEndpointConfig -> {})
                 .authorizationEndpoint(authorizationEndpointConfig -> {})
