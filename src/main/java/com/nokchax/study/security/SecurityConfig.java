@@ -125,13 +125,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // logout 커스터 마이징
         http.logout()
-                .logoutUrl("")
-                .addLogoutHandler((request, response, authentication) -> {})
-                .clearAuthentication(true)
-                .deleteCookies("delete cookie")
-                .logoutRequestMatcher(request -> true)
-                .logoutSuccessUrl("")
-                .logoutSuccessHandler((request, response, authentication) -> {});
+                .logoutUrl("") // 로그아웃을 실행하는 필터와 매칭되는 url
+                .addLogoutHandler((request, response, authentication) -> {}) // 로그아웃 처리를 직접 하고 싶을때 list로 되어 있기 때문에 교체가 아닌 추가!
+                .clearAuthentication(true) // 인증정보를 지움
+                .deleteCookies("delete cookie") // varargs 를 받으므로 쿠키명 사이에 공백을 넣어 여러 쿠키를 지울 수 있다.
+                .logoutRequestMatcher(request -> true) //todo logout url 과의 차이점은??
+                .logoutSuccessUrl("") // 로그아웃 성공 이후 리다이렉트 할 url
+                .logoutSuccessHandler((request, response, authentication) -> {}); // 로그아웃 성공 이후에 부가 작업을 추가하기 위함
         
         
         // form 로그인시에 username 으로 해당 유저에 대한 User 정보를 리턴하기 위한 service 객체를 커스터 마이징 가능
