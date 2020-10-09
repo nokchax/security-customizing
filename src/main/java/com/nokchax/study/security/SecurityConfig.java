@@ -1,5 +1,6 @@
 package com.nokchax.study.security;
 
+import com.nokchax.study.security.twitter.TwitterConfigurer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -174,6 +175,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         
         // about cors
         http.cors();
+
+
+        // apply custom configurer
+        http.apply(new TwitterConfigurer<>());
 
         // set multiple authentication provider
         // https://www.baeldung.com/spring-security-multiple-auth-providers
