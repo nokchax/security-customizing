@@ -15,4 +15,14 @@ public class TwitterConfigurer<B extends HttpSecurityBuilder<B>>
     // 상속받은후 super.init()을 호출하면 안된다.
     
     // 혹은 filter comparator 를 주입해 주어야 하는데 ..
+
+    @Override
+    public void init(B http) throws Exception {
+        super.init(http);
+    }
+
+    @Override
+    public void configure(B http) throws Exception {
+        super.configure(http);
+    }
 }
